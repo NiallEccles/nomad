@@ -1,4 +1,5 @@
 import './global.css';
+import {Providers} from "./providers";
 
 export const metadata = {
   title: 'Welcome to nomad-ui',
@@ -12,7 +13,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      <Providers>
+        {/*<Navigation />*/}
+        <main>
+          <div>
+            {children}
+          </div>
+        </main>
+      </Providers>
+      </body>
     </html>
   );
 }
