@@ -12,19 +12,15 @@ import {
 import {parseDate} from "@internationalized/date";
 import { countries } from '@/countries';
 import { Adapter } from '@/adapter';
+import { Trip } from '@/types/trip';
 
 interface FormErrors {
   [key: string]: string;
 }
 
-interface FormData {
-  trip_name: string;
-  trip_duration: RangeValue<DateValue> | null;
-  destination: string;
-}
 
 export const BasicInfo: React.FC = () => {
-  const [_, setSubmitted] = useState<FormData | null>(null);
+  const [_, setSubmitted] = useState<Trip | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
   const [tripDuration, setTripDuration] = React.useState<RangeValue<DateValue> | null>({
     start: parseDate("2024-04-01"),
@@ -37,7 +33,7 @@ export const BasicInfo: React.FC = () => {
     e.preventDefault();
     setIsLoading(true);
     const formData = new FormData(e.currentTarget);
-    const data: FormData = Object.fromEntries(formData) as unknown as FormData;
+    const data: Trip = Object.fromEntries(formData) as unknown as Trip;
 
     // Custom validation checks
     const newErrors: FormErrors = {};
@@ -81,7 +77,7 @@ export const BasicInfo: React.FC = () => {
           label="Name your trip"
           labelPlacement="outside"
           name="trip_name"
-          placeholder="Trip name"
+          placeholder="Page name"
           size='lg'
         />
 
