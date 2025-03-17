@@ -59,7 +59,7 @@ export const BasicInfo: React.FC = () => {
     setIsLoading(false);
 
     const adapter = new Adapter('local');
-    adapter.save({ ...data, trip_duration: tripDuration });
+    adapter.save({ ...data, trip_duration: tripDuration }).then((data: boolean)=> console.log(data));
   };
 
   return (

@@ -13,14 +13,18 @@ export class Adapter {
     this.env = env;
   }
 
-  public save(trip: TripData): void {
-    console.log(this.env);
-    if(this.env === 'local') {
-      this.saveLocal(trip);
-    }
+  public save(trip: TripData): Promise<boolean> {
+    return this.saveLocal(trip);
   }
 
-  private saveLocal(trip: TripData): void {
-    localStorage.setItem('trip', JSON.stringify(trip));
+  private saveLocal(trip: TripData): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      try{
+        localStorage.setItem('trip', JSON.stringify(trip));
+        return resolve(true);
+      } catch (error) {
+        return reject(error);
+      }
+    })
   }
 }
