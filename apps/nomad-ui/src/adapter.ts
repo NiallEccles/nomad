@@ -17,6 +17,15 @@ export class Adapter {
     return this.saveLocal(trip);
   }
 
+  public get(): Promise<TripData> {
+    return new Promise((resolve, reject) => {
+      if(localStorage.getItem('trip')) {
+        return resolve(JSON.parse(localStorage.getItem('trip')!));
+      }
+      return reject(new Error('Not found'));
+    })
+  }
+
   private saveLocal(trip: TripData): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try{
