@@ -11,6 +11,7 @@ import {
 } from '@heroui/react';
 import {parseDate} from "@internationalized/date";
 import { countries } from '@/countries';
+import { Adapter } from '@/adapter';
 
 interface FormErrors {
   [key: string]: string;
@@ -56,6 +57,9 @@ export const BasicInfo: React.FC = () => {
     setErrors({});
     setSubmitted({ ...data, trip_duration: tripDuration });
     setIsLoading(false);
+
+    const adapter = new Adapter('local');
+    adapter.save({ ...data, trip_duration: tripDuration });
   };
 
   return (
