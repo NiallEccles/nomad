@@ -78,6 +78,7 @@ export const BasicInfo: React.FC = () => {
           labelPlacement="outside"
           name="trip_name"
           placeholder="Trip name"
+          size='lg'
         />
 
         <Autocomplete
@@ -87,6 +88,7 @@ export const BasicInfo: React.FC = () => {
           name="destination"
           placeholder="Select destination"
           allowsCustomValue
+          size='lg'
         >
           {
             countries.map(({name, alpha2, emoji}) => (
@@ -102,13 +104,14 @@ export const BasicInfo: React.FC = () => {
           className="max-w-xs"
           label="Stay duration"
           onChange={setTripDuration}
+          size='lg'
         />
 
         <div className="flex gap-4">
-          <Button className="w-full" color="primary" type="submit" isLoading={isLoading}>
+          <Button className="w-full" color="primary" type="submit" isLoading={isLoading} size='lg'>
             Continue
           </Button>
-          <Button type="reset" variant="bordered">
+          <Button type="reset" variant="bordered" size='lg'>
             Reset
           </Button>
         </div>
